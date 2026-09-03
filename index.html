@@ -434,6 +434,8 @@ const MENU = [
   {n:"Butter Cookies (250g)",d:"Classic melt-in-mouth tea cookies.",p:120,tag:"",img:"1499636136210-6f4ee915583e"},
   {n:"Red Velvet Slice",d:"Velvety sponge with cream cheese.",p:90,tag:"New",img:"1586985289906-406988974504"},
 ];
+// product-page ids in the SAME order as MENU above
+const PRODUCT_IDS=["dutch-truffle","chicken-puff","veg-puff","milk-bread","black-forest","butterscotch-pastry","butter-cookies","red-velvet"];
 const FLAVORS=[["🍫 Dutch Truffle",0],["🍒 Black Forest",-40],["🍯 Butterscotch",-60],["❤️ Red Velvet",40],["🍓 Fresh Fruit",60],["🍇 Heritage Plum",120]];
 const WEIGHTS=[["0.5 Kg",0.5],["1.0 Kg",1],["2.0 Kg",2],["3.0 Kg+",3]];
 const SHAPES=[["Round",0],["Heart",80],["Square",40]];
@@ -446,14 +448,17 @@ const TESTS=[
 let cart=[], cakeFlavor=0, cakeWeight=1, cakeShape=0, cakeFlavorName="🍫 Dutch Truffle", cakeShapeName="Round";
 const BASE_CAKE=780;
 
-// render menu
+// render menu — cards link to product detail pages
 document.getElementById('menuGrid').innerHTML = MENU.map((m,i)=>`
   <div class="item">
-    <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-${m.img}?auto=format&fit=crop&w=600&q=80')">${m.tag?`<span class="tag">${m.tag}</span>`:''}</div>
+    <a href="product.html?id=${PRODUCT_IDS[i]}" style="display:block">
+      <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-${m.img}?auto=format&fit=crop&w=600&q=80')">${m.tag?`<span class="tag">${m.tag}</span>`:''}</div>
+    </a>
     <div class="body">
-      <h3>${m.n}</h3>
+      <a href="product.html?id=${PRODUCT_IDS[i]}"><h3>${m.n}</h3></a>
       <div class="desc">${m.d}</div>
       <div class="foot"><span class="price">₹${m.p}</span><button class="add" onclick="addItem(${i})">+ Add</button></div>
+      <a href="product.html?id=${PRODUCT_IDS[i]}" style="display:block;text-align:center;margin-top:10px;font-size:.8rem;color:var(--gold);font-weight:600">View Details →</a>
     </div>
   </div>`).join('');
 
