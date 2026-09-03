@@ -1,5 +1,5 @@
 // ==== Reverie Synaptic Pulse Bakery — shared data + cart ====
-const WA_NUMBER = "919000000000"; // placeholder Coimbatore WhatsApp — swap for real
+const WA_NUMBER = "916380005613"; // contact/enquiry only (NOT order forwarding)
 
 const IMG = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
 
@@ -135,10 +135,21 @@ function addToCart(name,price,qty){
   if(ex) ex.q+=qty; else c.push({n:name,p:price,q:qty});
   saveCart(c);
 }
-function waOrder(){
-  const c=loadCart(); if(!c.length){alert("Your basket is empty!");return;}
-  let msg="*New Order — Reverie Synaptic Pulse Bakery*%0A%0A";
-  c.forEach(x=>{ msg+=`• ${x.n} × ${x.q} = ₹${x.p*x.q}%0A`; });
-  msg+=`%0A*Estimated Total: ₹${cartTotal()}*%0A%0APlease confirm availability & pickup/delivery.`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,"_blank");
+// Contact/enquiry ONLY — not order forwarding
+function waInquiry(){window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi! I have an enquiry about Reverie Synaptic Pulse Bakery.")}`,"_blank");}
+
+// ==== Orders (client-side checkout, no backend) ====
+function newOrderId(){
+  const d=new Date();
+  const ymd=`${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`;
+  return `RSP-${ymd}-${Math.floor(1000+Math.random()*9000)}`;
 }
+function saveOrder(order){
+  const all=JSON.parse(localStorage.getItem("rsp-orders")||"[]");
+  all.push(order); localStorage.setItem("rsp-orders", JSON.stringify(all));
+}
+function getOrder(id){ return (JSON.parse(localStorage.getItem("rsp-orders")||"[]")).find(o=>o.id===id); }
+function clearCart(){ localStorage.removeItem("rsp-cart"); }
+const DELIVERY_FEE=40;          // flat delivery fee
+const FREE_DELIVERY_ABOVE=750;  // free delivery threshold
+function deliveryFee(sub, mode){ return mode==="pickup"?0:(sub>=FREE_DELIVERY_ABOVE?0:DELIVERY_FEE); }

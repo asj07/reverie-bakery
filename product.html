@@ -145,7 +145,7 @@ footer{background:#1c130d;color:#9c8877;padding:28px 0;text-align:center;font-si
         </div>
         <div class="act">
           <button class="btn btn-gold" onclick="addNow()">Add to Basket</button>
-          <button class="btn btn-cocoa" onclick="buyNow()">Order on WhatsApp</button>
+          <button class="btn btn-cocoa" onclick="buyNow()">Buy Now</button>
         </div>
         <div class="trust">
           <div>🧈 Pure butter &amp; cocoa</div>
@@ -234,7 +234,7 @@ function setW(i){ curW=i; [...document.querySelectorAll('#wOpts .opt')].forEach(
 function chQ(d){ qty=Math.max(1,qty+d); document.getElementById("qv").textContent=qty; }
 function itemName(){ return P.weightOpts ? `${P.name} (${WEIGHTS[curW][0]})` : P.name; }
 function addNow(){ addToCart(itemName(), priceForW(), qty); updateBadge(); toast(`${itemName()} × ${qty} added to basket`); }
-function buyNow(){ addToCart(itemName(), priceForW(), qty); updateBadge(); waOrder(); }
+function buyNow(){ addToCart(itemName(), priceForW(), qty); window.location.href="checkout.html"; }
 function updateBadge(){ /* no badge on this page header, but keep cart synced */ }
 function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),2200); }
 document.getElementById("yr").textContent=new Date().getFullYear();

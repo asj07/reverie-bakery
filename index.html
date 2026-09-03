@@ -441,14 +441,14 @@ footer{background:#1c130d;color:#cbb9a6;padding:50px 0 24px}
   <div class="drawer-body" id="cartBody"></div>
   <div class="drawer-foot">
     <div class="tot"><span>Estimated Total</span><span id="cartTotal">₹0</span></div>
-    <button class="wa-btn" onclick="sendWhatsApp()">💬 Confirm Order on WhatsApp</button>
-    <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:10px">Orders are forwarded to Reverie Synaptic Pulse Bakery on WhatsApp for quick confirmation.</p>
+    <button class="wa-btn" style="background:linear-gradient(135deg,var(--gold),var(--gold-bright))" onclick="goCheckout()">Proceed to Checkout →</button>
+    <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:10px">Secure checkout · Cart · Delivery · Payment — no WhatsApp needed.</p>
   </div>
 </aside>
 
 <script>
 // ==== CONFIG ==== (edit phone once you share the real number)
-const WA_NUMBER = "919000000000"; // placeholder Coimbatore WhatsApp
+const WA_NUMBER = "916380005613"; // Coimbatore WhatsApp — enquiry/contact only
 
 const MENU = [
   {n:"Dutch Truffle Cake",d:"Rich Belgian chocolate ganache layers.",p:780,tag:"Bestseller",img:"1578985545062-69928b1d9587"},
@@ -511,14 +511,15 @@ document.getElementById('testGrid').innerHTML=TESTS.map(t=>`
   <div class="test"><div class="stars">★★★★★</div><p>"${t.t}"</p>
   <div class="who"><div class="av">${t.n[0]}</div><div><b>${t.n}</b><small>${t.w}, Coimbatore</small></div></div></div>`).join('');
 
-// cart
-function addItem(i){const m=MENU[i];const ex=cart.find(c=>c.n===m.n);if(ex)ex.q++;else cart.push({n:m.n,p:m.p,q:1});renderCart();openCart();}
+// cart (persisted to localStorage so checkout.html can read it)
+function persist(){ localStorage.setItem('rsp-cart', JSON.stringify(cart)); }
+function addItem(i){const m=MENU[i];const ex=cart.find(c=>c.n===m.n);if(ex)ex.q++;else cart.push({n:m.n,p:m.p,q:1});persist();renderCart();openCart();}
 function addCake(){
   const price=calcCake();
   const msg=document.getElementById('cakeMsg').value||'(no message)';
   const date=document.getElementById('cakeDate').value||'(date TBD)';
   const name=WEIGHTS[cakeWeight][0]+' '+cakeFlavorName+' '+cakeShapeName+' Cake — "'+msg+'" ('+date+')';
-  cart.push({n:name,p:price,q:1});renderCart();openCart();
+  cart.push({n:name,p:price,q:1});persist();renderCart();openCart();
 }
 function renderCart(){
   const b=document.getElementById('cartBody');
@@ -530,19 +531,15 @@ function renderCart(){
   const tot=cart.reduce((s,c)=>s+c.p*c.q,0);
   document.getElementById('cartTotal').textContent='₹'+tot;
 }
-function chQty(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);renderCart();}
-function openCart(){document.getElementById('overlay').classList.add('open');document.getElementById('drawer').classList.add('open');}function closeCart(){document.getElementById('overlay').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
+function chQty(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);persist();renderCart();}
+function openCart(){document.getElementById('overlay').classList.add('open');document.getElementById('drawer').classList.add('open');}
+function closeCart(){document.getElementById('overlay').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
 function closeNav(){document.getElementById('navLinks').classList.remove('open');}
-function sendWhatsApp(){
-  if(!cart.length){alert('Your basket is empty!');return;}
-  let msg='*New Order — Reverie Synaptic Pulse Bakery*%0A%0A';
-  cart.forEach(c=>{msg+=`• ${c.n} × ${c.q} = ₹${c.p*c.q}%0A`;});
-  const tot=cart.reduce((s,c)=>s+c.p*c.q,0);
-  msg+=`%0A*Estimated Total: ₹${tot}*%0A%0APlease confirm availability &amp; pickup/delivery.`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
-}
-function waInquiry(){window.open(`https://wa.me/${WA_NUMBER}?text=Hi! I have an enquiry about Reverie Synaptic Pulse Bakery.`,'_blank');}
+function goCheckout(){ if(!cart.length){alert('Your basket is empty!');return;} persist(); window.location.href='checkout.html'; }
+function waInquiry(){window.open(`https://wa.me/${WA_NUMBER}?text=`+encodeURIComponent('Hi! I have an enquiry about Reverie Synaptic Pulse Bakery.'),'_blank');}
+// load any existing cart saved from product pages
+try{ const saved=JSON.parse(localStorage.getItem('rsp-cart')||'[]'); if(Array.isArray(saved)&&saved.length) cart=saved; }catch(e){}
 document.getElementById('yr').textContent=new Date().getFullYear();
 renderCart();
 </script>
