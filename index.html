@@ -207,33 +207,138 @@ footer{background:#1c130d;color:#cbb9a6;padding:50px 0 24px}
   .menu-grid{grid-template-columns:1fr}
   .sec-head{margin-bottom:34px}
 }
+/* ===== Shopical-style multi-row header ===== */
+.topbar{background:var(--cocoa-dark);color:#e8dccb;font-size:.78rem}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:38px;gap:16px}
+.topbar .tinfo{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.topbar .tinfo span{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.topbar a{color:#e8dccb}.topbar a:hover{color:var(--gold-bright)}
+.topbar .social{display:flex;gap:8px;align-items:center}
+.topbar .social a{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.72rem;transition:.2s}
+.topbar .social a:hover{background:var(--gold)}
+.topbar .tsep{opacity:.4}
+
+.midbar{background:var(--bg);border-bottom:1px solid var(--line)}
+.midbar .wrap{display:flex;align-items:center;gap:24px;padding:16px 20px}
+.searchbox{flex:1;display:flex;max-width:620px;border:2px solid var(--cocoa);border-radius:40px;overflow:hidden;background:#fff}
+.searchbox input{flex:1;border:none;padding:11px 18px;font-family:inherit;font-size:.9rem;outline:none;background:transparent}
+.searchbox select{border:none;border-left:1px solid var(--line);padding:0 12px;font-family:inherit;font-size:.82rem;background:#fff;color:var(--muted);outline:none;cursor:pointer;max-width:150px}
+.searchbox button{background:var(--cocoa);color:#fff;border:none;padding:0 20px;cursor:pointer;font-size:1rem}
+.searchbox button:hover{background:var(--cocoa-dark)}
+.mid-cart{display:flex;align-items:center;gap:10px;cursor:pointer;white-space:nowrap}
+.mid-cart .cic{width:44px;height:44px;border-radius:50%;background:var(--cream);color:var(--cocoa);display:flex;align-items:center;justify-content:center;font-size:1.2rem;position:relative}
+.mid-cart .cic .badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#fff;border-radius:50%;width:20px;height:20px;font-size:.68rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+.mid-cart .ctxt small{display:block;font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.mid-cart .ctxt b{font-family:'Playfair Display';color:var(--cocoa);font-size:1rem}
+
+.navbar-main{background:linear-gradient(90deg,var(--cocoa),var(--cocoa-dark));position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(107,63,42,.2)}
+.navbar-main .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+.navbar-main .nlinks{display:flex;gap:4px;align-items:center}
+.navbar-main .nlinks a{color:#fff;font-size:.86rem;font-weight:600;padding:16px 16px;transition:.2s;position:relative;text-transform:uppercase;letter-spacing:.03em}
+.navbar-main .nlinks a:hover{background:rgba(0,0,0,.15);color:var(--gold-bright)}
+.navbar-main .nicons{display:flex;gap:14px;align-items:center}
+.navbar-main .nicons a{color:#fff;position:relative;display:flex;align-items:center}
+.navbar-main .nicons a:hover{color:var(--gold-bright)}
+.navbar-main .nicons .wb{position:absolute;top:-8px;right:-9px;background:var(--gold);color:#fff;border-radius:50%;width:17px;height:17px;font-size:.62rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+.hamburger2{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+.promobar{background:var(--cream);border-bottom:1px solid var(--line)}
+.promobar .wrap{display:flex;align-items:center;justify-content:center;gap:10px;height:40px;font-size:.82rem;color:var(--cocoa-dark);text-align:center;flex-wrap:wrap}
+.promobar b{color:var(--cocoa)}
+.promobar .pdot{color:var(--gold);font-weight:700}
+
+@media(max-width:900px){
+  .topbar .tinfo span.hide-sm{display:none}
+  .searchbox select{display:none}
+  .navbar-main .nlinks{position:absolute;top:52px;left:0;right:0;flex-direction:column;background:var(--cocoa-dark);display:none;z-index:99}
+  .navbar-main .nlinks.open{display:flex}
+  .navbar-main .nlinks a{width:100%;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .hamburger2{display:block}
+}
+@media(max-width:600px){
+  .topbar .tinfo{gap:10px}
+  .topbar .tinfo span.hide-xs{display:none}
+  .midbar .wrap{flex-wrap:wrap;gap:12px;padding:12px 16px}
+  .searchbox{order:3;max-width:100%;width:100%}
+  .mid-cart .ctxt{display:none}
+}
 </style>
 </head>
 <body>
 
-<div class="announce">✨ Welcome to <b>Reverie Synaptic Pulse Bakery</b> • Serving oven-fresh bakes &amp; custom cakes daily across Coimbatore!</div>
-
-<header>
+<!-- ===== TOP INFO BAR ===== -->
+<div class="topbar">
   <div class="wrap">
-    <nav>
-      <a href="#" class="logo">
-        <div class="mark">R</div>
-        <div class="name">Reverie Synaptic Pulse<small>Artisan Bakery · Coimbatore</small></div>
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#menu" onclick="closeNav()">Menu</a>
-        <a href="#custom-cakes" onclick="closeNav()">Custom Cakes</a>
-        <a href="#about" onclick="closeNav()">Our Story</a>
-        <a href="#showcase" onclick="closeNav()">Gallery</a>
-        <a href="#location" onclick="closeNav()">Location</a>
-      </div>
-      <div class="nav-cta">
-        <button class="cart-btn" onclick="openCart()">Basket <span class="badge" id="badge">0</span></button>
-        <button class="hamburger" onclick="toggleNav()">☰</button>
-      </div>
-    </nav>
+    <div class="tinfo">
+      <span>📍 Coimbatore, Tamil Nadu 641001</span>
+      <span class="tsep">|</span>
+      <span class="hide-sm">📞 <a href="tel:+916380005613">+91 63800 05613</a></span>
+      <span class="tsep hide-sm">|</span>
+      <span class="hide-xs">✉️ <a href="mailto:hello@reveriebakery.in">hello@reveriebakery.in</a></span>
+      <span class="tsep hide-xs">|</span>
+      <span class="hide-xs">🕗 8:00 AM – 9:00 PM</span>
+    </div>
+    <div class="social">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Instagram">◎</a>
+      <a href="#" aria-label="WhatsApp" onclick="waInquiry();return false">✆</a>
+    </div>
   </div>
-</header>
+</div>
+
+<!-- ===== MID BAR: logo + search + cart ===== -->
+<div class="midbar">
+  <div class="wrap">
+    <a href="index.html" class="logo">
+      <div class="mark">R</div>
+      <div class="name">Reverie Synaptic Pulse<small>Artisan Bakery · Coimbatore</small></div>
+    </a>
+    <form class="searchbox" onsubmit="doSearch(event)">
+      <input type="text" id="siteSearch" placeholder="Search cakes, breads, puffs..."/>
+      <select id="searchCat">
+        <option value="">All Categories</option>
+        <option>Signature Cakes</option>
+        <option>Savories</option>
+        <option>Breads</option>
+        <option>Pastries</option>
+        <option>Cookies</option>
+      </select>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+    <div class="mid-cart" onclick="openCart()">
+      <div class="cic">🛒<span class="badge" id="badgeMid">0</span></div>
+      <div class="ctxt"><small>Your Basket</small><b id="cartMidTotal">₹0</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN NAV BAR ===== -->
+<div class="navbar-main">
+  <div class="wrap">
+    <button class="hamburger2" onclick="toggleNav()">☰</button>
+    <div class="nlinks" id="navLinks">
+      <a href="index.html" onclick="closeNav()">Home</a>
+      <a href="#menu" onclick="closeNav()">Menu</a>
+      <a href="#custom-cakes" onclick="closeNav()">Custom Cakes</a>
+      <a href="#about" onclick="closeNav()">Our Story</a>
+      <a href="#showcase" onclick="closeNav()">Gallery</a>
+      <a href="#location" onclick="closeNav()">Location</a>
+    </div>
+    <div class="nicons">
+      <a href="#" onclick="waInquiry();return false" aria-label="Enquiry">💬</a>
+      <a href="#" onclick="openCart();return false" aria-label="Cart">🛒<span class="wb" id="badgeNav">0</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROMO STRIP ===== -->
+<div class="promobar">
+  <div class="wrap">
+    <span><b>FREE DELIVERY</b> on orders over ₹750</span>
+    <span class="pdot">•</span>
+    <span><b>15% OFF</b> your first custom cake order</span>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -462,6 +567,8 @@ const MENU = [
 ];
 // product-page ids in the SAME order as MENU above
 const PRODUCT_IDS=["dutch-truffle","chicken-puff","veg-puff","milk-bread","black-forest","butterscotch-pastry","butter-cookies","red-velvet"];
+// categories in the SAME order as MENU (for header search filter)
+const MENU_CAT=["Signature Cakes","Savories","Savories","Breads","Signature Cakes","Pastries","Cookies","Pastries"];
 const FLAVORS=[["🍫 Dutch Truffle",0],["🍒 Black Forest",-40],["🍯 Butterscotch",-60],["❤️ Red Velvet",40],["🍓 Fresh Fruit",60],["🍇 Heritage Plum",120]];
 const WEIGHTS=[["0.5 Kg",0.5],["1.0 Kg",1],["2.0 Kg",2],["3.0 Kg+",3]];
 const SHAPES=[["Round",0],["Heart",80],["Square",40]];
@@ -523,13 +630,28 @@ function addCake(){
 }
 function renderCart(){
   const b=document.getElementById('cartBody');
-  const badge=document.getElementById('badge');
   const count=cart.reduce((s,c)=>s+c.q,0);
-  badge.textContent=count;
+  const tot=cart.reduce((s,c)=>s+c.p*c.q,0);
+  ['badge','badgeMid','badgeNav'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=count;});
+  const mt=document.getElementById('cartMidTotal');if(mt)mt.textContent='₹'+tot;
   if(!cart.length){b.innerHTML='<div class="cart-empty">🧺<br>Your basket is empty.<br>Add some fresh bakes!</div>';document.getElementById('cartTotal').textContent='₹0';return;}
   b.innerHTML=cart.map((c,i)=>`<div class="cart-line"><div style="flex:1"><div style="font-weight:600;font-size:.9rem">${c.n}</div><div class="qtybox"><button onclick="chQty(${i},-1)">−</button><span>${c.q}</span><button onclick="chQty(${i},1)">+</button><span style="margin-left:auto;color:var(--cocoa);font-weight:600">₹${c.p*c.q}</span></div></div></div>`).join('');
-  const tot=cart.reduce((s,c)=>s+c.p*c.q,0);
   document.getElementById('cartTotal').textContent='₹'+tot;
+}
+function doSearch(e){
+  e.preventDefault();
+  const q=(document.getElementById('siteSearch').value||'').trim().toLowerCase();
+  const cat=document.getElementById('searchCat').value;
+  document.getElementById('menu').scrollIntoView({behavior:'smooth'});
+  // filter the menu cards live
+  const cards=document.querySelectorAll('#menuGrid .item');
+  cards.forEach((card,i)=>{
+    const name=(MENU[i].n||'').toLowerCase();
+    const desc=(MENU[i].d||'').toLowerCase();
+    const matchQ=!q||name.includes(q)||desc.includes(q);
+    const matchCat=!cat||(MENU_CAT[i]===cat);
+    card.style.display=(matchQ&&matchCat)?'':'none';
+  });
 }
 function chQty(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);persist();renderCart();}
 function openCart(){document.getElementById('overlay').classList.add('open');document.getElementById('drawer').classList.add('open');}
