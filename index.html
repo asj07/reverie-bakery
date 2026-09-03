@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reverie Synaptic Pulse | Coimbatore's Artisan Bakery & Custom Cakes</title>
+<meta name="description" content="Reverie Synaptic Pulse — Coimbatore's artisan bakery. Oven-fresh breads, signature puffs, custom celebration cakes and pastries baked fresh daily."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#fbf6ef; --card:#ffffff; --ink:#2a1e17; --muted:#7a6a5d;
+  --cocoa:#6b3f2a; --cocoa-dark:#4a2c1d; --gold:#c99a4b; --gold-bright:#e2b869;
+  --cream:#f3e7d6; --line:rgba(107,63,42,.14); --green:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.eyebrow{text-transform:uppercase;letter-spacing:.25em;font-size:.72rem;font-weight:600;color:var(--gold)}
+.btn{display:inline-block;padding:13px 26px;border-radius:40px;font-weight:600;font-size:.9rem;cursor:pointer;border:none;transition:.3s;text-align:center}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#fff;box-shadow:0 6px 18px rgba(201,154,75,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,154,75,.45)}
+.btn-out{background:transparent;border:1.5px solid var(--cocoa);color:var(--cocoa)}
+.btn-out:hover{background:var(--cocoa);color:#fff}
+.section{padding:80px 0}
+.center{text-align:center}
+
+/* Announcement bar */
+.announce{background:var(--cocoa-dark);color:var(--cream);font-size:.82rem;text-align:center;padding:8px 20px}
+.announce b{color:var(--gold-bright)}
+
+/* Nav */
+header{position:sticky;top:0;z-index:100;background:rgba(251,246,239,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo .mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--cocoa),var(--cocoa-dark));color:var(--gold-bright);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem}
+.logo .name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;line-height:1.1}
+.logo .name small{display:block;font-family:'Inter';font-weight:500;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--ink);transition:.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.hamburger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--cocoa)}
+.cart-btn{position:relative;background:var(--cocoa);color:#fff;border:none;border-radius:40px;padding:10px 18px;font-weight:600;font-size:.85rem;cursor:pointer}
+.cart-btn .badge{position:absolute;top:-6px;right:-6px;background:var(--gold);color:#fff;border-radius:50%;width:20px;height:20px;font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+/* Hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=2000&q=80') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(42,30,23,.88) 0%,rgba(42,30,23,.55) 55%,rgba(42,30,23,.25) 100%)}
+.hero-inner{position:relative;z-index:2;color:#fff;max-width:640px;padding:40px 0}
+.hero-inner .eyebrow{color:var(--gold-bright)}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.08;margin:16px 0 20px;font-weight:700}
+.hero p{font-size:1.08rem;color:#f0e6d8;margin-bottom:30px;max-width:540px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;max-width:1200px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:16px;backdrop-filter:blur(6px)}
+.stat b{font-family:'Playfair Display';font-size:1.2rem;color:var(--gold-bright);display:block}
+.stat span{font-size:.78rem;color:#e8dccb}
+
+/* Info strip */
+.info-strip{background:var(--cocoa-dark);color:var(--cream)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.info-cell{padding:28px 24px;border-right:1px solid rgba(255,255,255,.1)}
+.info-cell:last-child{border-right:none}
+.info-cell h4{color:var(--gold-bright);font-family:'Inter';font-weight:600;font-size:.95rem;margin-bottom:6px}
+.info-cell p{font-size:.88rem;color:#e0d3c2}
+
+/* Section headers */
+.sec-head{text-align:center;max-width:640px;margin:0 auto 50px}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0 14px;color:var(--cocoa-dark)}
+.sec-head p{color:var(--muted)}
+
+/* Menu grid */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.item{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(107,63,42,.08);transition:.35s;border:1px solid var(--line)}
+.item:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(107,63,42,.16)}
+.item .thumb{height:180px;background-size:cover;background-position:center;position:relative}
+.item .tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#fff;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.05em}
+.item .body{padding:18px}
+.item h3{font-size:1.12rem;margin-bottom:4px;color:var(--cocoa-dark)}
+.item .desc{font-size:.82rem;color:var(--muted);margin-bottom:14px;min-height:34px}
+.item .foot{display:flex;align-items:center;justify-content:space-between}
+.item .price{font-family:'Playfair Display';font-weight:700;font-size:1.15rem;color:var(--cocoa)}
+.add{background:var(--cream);color:var(--cocoa);border:none;border-radius:30px;padding:8px 16px;font-weight:600;font-size:.82rem;cursor:pointer;transition:.2s}
+.add:hover{background:var(--gold);color:#fff}
+
+/* Custom cake */
+.cake{background:linear-gradient(135deg,#fff 0%,var(--cream) 100%)}
+.cake-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.cake-copy ul{list-style:none;margin:22px 0}
+.cake-copy li{padding:8px 0 8px 30px;position:relative;color:var(--ink)}
+.cake-copy li::before{content:'🍰';position:absolute;left:0}
+.config{background:#fff;border-radius:22px;padding:28px;box-shadow:0 14px 40px rgba(107,63,42,.14);border:1px solid var(--line)}
+.config h3{color:var(--cocoa-dark);margin-bottom:4px}
+.config .price-est{background:var(--cocoa-dark);color:var(--gold-bright);border-radius:12px;padding:12px 16px;text-align:center;font-family:'Playfair Display';font-size:1.4rem;font-weight:700;margin:16px 0}
+.cfg-label{font-size:.8rem;font-weight:600;color:var(--muted);margin:14px 0 8px;display:block}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:30px;padding:8px 14px;font-size:.82rem;cursor:pointer;transition:.2s}
+.opt.active{background:var(--cocoa);color:#fff;border-color:var(--cocoa)}
+.config input,.config select{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;margin-top:4px;font-size:.9rem}
+.config input:focus,.config select:focus{outline:none;border-color:var(--gold)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.about-imgs img{border-radius:16px;height:100%;object-fit:cover;min-height:230px}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.feat .f{background:var(--card);border-radius:14px;padding:18px;border:1px solid var(--line)}
+.feat .f h4{color:var(--cocoa);margin-bottom:6px;font-family:'Inter';font-size:.95rem}
+.feat .f p{font-size:.82rem;color:var(--muted)}
+
+/* Showcase */
+.show-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.show-grid .s{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1}
+.show-grid .s img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.show-grid .s:hover img{transform:scale(1.08)}
+.show-grid .s span{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(transparent,rgba(42,30,23,.85));color:#fff;font-weight:600;font-size:.9rem}
+
+/* Testimonials */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.test{background:var(--card);border-radius:18px;padding:26px;border:1px solid var(--line);box-shadow:0 6px 18px rgba(107,63,42,.06)}
+.test .stars{color:var(--gold);margin-bottom:12px}
+.test p{font-size:.9rem;color:var(--ink);font-style:italic;margin-bottom:16px}
+.test .who{display:flex;align-items:center;gap:12px}
+.test .av{width:42px;height:42px;border-radius:50%;background:var(--cream);color:var(--cocoa);display:flex;align-items:center;justify-content:center;font-weight:700}
+.test .who b{font-size:.9rem;display:block}
+.test .who small{color:var(--muted);font-size:.78rem}
+
+/* Location */
+.loc{background:var(--cocoa-dark);color:var(--cream)}
+.loc .sec-head h2,.loc .sec-head p{color:var(--cream)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.hours{background:rgba(255,255,255,.06);border-radius:16px;padding:26px;border:1px solid rgba(255,255,255,.12)}
+.hours h3{color:var(--gold-bright);margin-bottom:16px;font-family:'Inter';font-size:1.05rem}
+.hours .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.9rem}
+.loc-card{background:rgba(255,255,255,.06);border-radius:16px;padding:26px;border:1px solid rgba(255,255,255,.12);margin-bottom:16px}
+.loc-card h4{color:var(--gold-bright);margin-bottom:8px;font-family:'Inter'}
+.loc-card p{font-size:.9rem;color:#e0d3c2}
+
+/* Footer */
+footer{background:#1c130d;color:#cbb9a6;padding:50px 0 24px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:30px}
+.foot-grid h4{color:var(--gold-bright);margin-bottom:14px;font-family:'Inter';font-size:.95rem}
+.foot-grid a,.foot-grid p{display:block;font-size:.86rem;color:#cbb9a6;margin-bottom:8px}
+.foot-grid a:hover{color:var(--gold-bright)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:.8rem;color:#9c8877}
+
+/* Cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(42,30,23,.55);backdrop-filter:blur(3px);z-index:200;opacity:0;pointer-events:none;transition:.3s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:100%;max-width:400px;background:#fff;z-index:201;transform:translateX(100%);transition:.4s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer-head{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.drawer-head h3{color:var(--cocoa-dark)}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 22px}
+.cart-line{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-line .qtybox{display:flex;align-items:center;gap:8px;margin-top:4px}
+.cart-line .qtybox button{width:26px;height:26px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;font-weight:700;color:var(--cocoa)}
+.cart-empty{text-align:center;color:var(--muted);padding:50px 20px}
+.drawer-foot{padding:22px;border-top:1px solid var(--line)}
+.drawer-foot .tot{display:flex;justify-content:space-between;font-family:'Playfair Display';font-size:1.2rem;font-weight:700;color:var(--cocoa-dark);margin-bottom:14px}
+.wa-btn{background:var(--green);color:#fff;width:100%;padding:14px;border:none;border-radius:12px;font-weight:600;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.close-x{background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--muted);line-height:1}
+
+/* Float WhatsApp */
+.wa-float{position:fixed;bottom:22px;right:22px;background:var(--green);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;z-index:150;box-shadow:0 8px 24px rgba(37,211,102,.45)}
+
+@media(max-width:860px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .info-grid,.cake-grid,.about-grid,.loc-grid,.foot-grid{grid-template-columns:1fr}
+  .info-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .show-grid,.test-grid{grid-template-columns:1fr 1fr}
+  .about-imgs{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){.show-grid,.test-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="announce">✨ Welcome to <b>Reverie Synaptic Pulse Bakery</b> • Serving oven-fresh bakes &amp; custom cakes daily across Coimbatore!</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo">
+        <div class="mark">R</div>
+        <div class="name">Reverie Synaptic Pulse<small>Artisan Bakery · Coimbatore</small></div>
+      </a>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#custom-cakes">Custom Cakes</a>
+        <a href="#about">Our Story</a>
+        <a href="#showcase">Gallery</a>
+        <a href="#location">Location</a>
+      </div>
+      <div class="nav-cta">
+        <button class="cart-btn" onclick="openCart()">Basket <span class="badge" id="badge">0</span></button>
+        <button class="hamburger" onclick="document.querySelector('.nav-links').style.display='flex'">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Coimbatore's Beloved Bakery Destination</span>
+    <h1>Every Bite Baked with Heart &amp; Passion</h1>
+    <p>Welcome to <b>Reverie Synaptic Pulse Bakery</b>. Loved across Coimbatore for fresh golden breads, signature spicy puffs, custom celebration cakes, and mouth-watering pastries — baked fresh every morning with modern craftsmanship.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-gold">Explore Bakery Menu</a>
+      <a href="#custom-cakes" class="btn btn-out" style="border-color:#fff;color:#fff">Order Custom Cake</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>100%</b><span>Fresh Twice Daily Oven Bakes</span></div>
+      <div class="stat"><b>Custom</b><span>Cakes Made to Order for Events</span></div>
+      <div class="stat"><b>7 Days</b><span>Open All Week, 8AM–9PM</span></div>
+      <div class="stat"><b>Coimbatore</b><span>Authentic Artisan Taste</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<section class="info-strip">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-cell"><h4>🥐 Famous Hot Puffs</h4><p>Baked golden &amp; crisp every afternoon — chicken &amp; veg!</p></div>
+      <div class="info-cell"><h4>📍 Branch Address</h4><p>Reverie Synaptic Pulse Bakery, Coimbatore, Tamil Nadu 641001</p></div>
+      <div class="info-cell"><h4>🕗 Opening Hours</h4><p>Monday – Sunday: 8:00 AM – 9:00 PM · Open 7 days</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Fresh From Our Ovens</span>
+      <h2>Our Bakery Menu</h2>
+      <p>Explore our handcrafted range of artisan breads, birthday cakes, crispy savories, and indulgent pastries.</p>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- CUSTOM CAKE -->
+<section class="section cake" id="custom-cakes">
+  <div class="wrap">
+    <div class="cake-grid">
+      <div class="cake-copy">
+        <span class="eyebrow">Custom Celebration Specialist</span>
+        <h2 style="color:var(--cocoa-dark);font-size:2.2rem;margin:12px 0">Design Your Custom Celebration Cake</h2>
+        <p style="color:var(--muted)">Whether it's a birthday, anniversary, corporate milestone, or family gathering in Coimbatore, our pastry chefs bake custom cakes to your exact taste, size, and theme.</p>
+        <ul>
+          <li>100% Eggless or Egg options available</li>
+          <li>Custom icing messages, edible photo prints &amp; designer shapes</li>
+          <li>Freshly baked on the day of your event</li>
+        </ul>
+        <p style="font-size:.85rem;color:var(--muted)">For tier cakes or themed fondant sculptures, please place your enquiry at least 24–48 hours in advance.</p>
+      </div>
+      <div class="config">
+        <h3>Custom Cake Configurator</h3>
+        <p style="color:var(--muted);font-size:.85rem">Pick flavor, weight, and custom message</p>
+        <div class="price-est">Estimated Price <span id="cakePrice">₹780</span></div>
+        <span class="cfg-label">1. Choose Base Flavor</span>
+        <div class="opts" id="flavors"></div>
+        <span class="cfg-label">2. Cake Weight</span>
+        <div class="opts" id="weights"></div>
+        <span class="cfg-label">3. Shape</span>
+        <div class="opts" id="shapes"></div>
+        <span class="cfg-label">4. Message on Cake</span>
+        <input type="text" id="cakeMsg" placeholder="e.g. Happy Birthday Priya"/>
+        <span class="cfg-label">Pickup / Delivery Date</span>
+        <input type="date" id="cakeDate"/>
+        <span class="cfg-label">Your Name</span>
+        <input type="text" id="cakeName" placeholder="Your name"/>
+        <button class="btn btn-gold" style="width:100%;margin-top:18px" onclick="addCake()">Add Custom Cake to Basket</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-imgs">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Baking fresh breads"/>
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Artisan cakes"/>
+      </div>
+      <div>
+        <span class="eyebrow">A Coimbatore Craft Bakery</span>
+        <h2 style="color:var(--cocoa-dark);font-size:2.2rem;margin:12px 0">Tradition, Consistent Taste &amp; Unmatched Freshness</h2>
+        <p style="color:var(--muted)"><b>Reverie Synaptic Pulse Bakery</b> is a modern artisan bakery in the heart of Coimbatore. Known for its extensive range of freshly baked goods, mouthwatering snack savories, and showstopping celebration cakes.</p>
+        <p style="color:var(--muted);margin-top:12px">From students grabbing hot puffs after class to families ordering milestone wedding cakes, we aim to be an inseparable part of Coimbatore's culinary culture — with a clean, warm, welcoming space for daily pickups or relaxed treats.</p>
+        <div class="feat">
+          <div class="f"><h4>Quality Ingredients</h4><p>Pure butter, premium cocoa, fresh dairy, and zero harmful additives.</p></div>
+          <div class="f"><h4>Clean &amp; Welcoming</h4><p>Spotless counters and friendly, courteous branch staff.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="section" id="showcase" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Mouth-Watering Moments</span>
+      <h2>Fresh Baked Showcase</h2>
+      <p>A glimpse of our daily favorites baked fresh right here in Coimbatore.</p>
+    </div>
+    <div class="show-grid">
+      <div class="s"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Signature cakes"/><span>Signature Cakes</span></div>
+      <div class="s"><img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80" alt="Crisp hot puffs"/><span>Crisp Hot Puffs</span></div>
+      <div class="s"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Fluffy milk breads"/><span>Fluffy Milk Breads</span></div>
+      <div class="s"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80" alt="Butter cookies"/><span>Butter Cookies &amp; Rusks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Loved by Coimbatore Locals</span>
+      <h2>Customer Testimonials</h2>
+      <p>Read what patrons across Coimbatore say about our bakes.</p>
+    </div>
+    <div class="test-grid" id="testGrid"></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section loc" id="location">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--gold-bright)">Visit Our Branch</span>
+      <h2>Location &amp; Opening Hours</h2>
+      <p>Conveniently located in Coimbatore. Stop by for your daily bread or celebrations.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="hours">
+        <h3>Weekly Opening Hours</h3>
+        <div class="row"><span>Sunday</span><span>8:00 AM – 9:00 PM</span></div>
+        <div class="row"><span>Monday</span><span>8:00 AM – 9:00 PM</span></div>
+        <div class="row"><span>Tuesday</span><span>8:00 AM – 9:00 PM</span></div>
+        <div class="row"><span>Wednesday</span><span>8:00 AM – 9:00 PM</span></div>
+        <div class="row"><span>Thursday</span><span>8:00 AM – 9:00 PM</span></div>
+        <div class="row"><span>Friday</span><span>8:00 AM – 9:00 PM</span></div>
+        <div class="row" style="border:none"><span>Saturday</span><span>8:00 AM – 9:00 PM</span></div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Coimbatore+Tamil+Nadu" target="_blank" class="btn btn-gold" style="width:100%;margin-top:18px">Open in Google Maps</a>
+      </div>
+      <div>
+        <div class="loc-card">
+          <h4>Store Address</h4>
+          <p>Reverie Synaptic Pulse Bakery, Coimbatore, Tamil Nadu 641001</p>
+          <p style="margin-top:8px;font-size:.82rem">Landmark: Central Coimbatore</p>
+        </div>
+        <div class="loc-card">
+          <h4>Getting Here</h4>
+          <p>Easily accessible by bus, auto, and two-wheelers from anywhere in Coimbatore.</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Coimbatore+Tamil+Nadu" target="_blank" class="btn btn-out" style="border-color:var(--gold-bright);color:var(--gold-bright);margin-top:12px">Start Navigation</a>
+        </div>
+        <div class="loc-card">
+          <h4>Quick Bakery Inquiry</h4>
+          <p>Questions about bulk orders, cake availability, or party snacks? Reach us on WhatsApp.</p>
+          <a href="#" onclick="waInquiry();return false" class="btn btn-gold" style="margin-top:12px;background:var(--green)">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px"><div class="mark">R</div><div class="name" style="color:#fff">Reverie Synaptic Pulse<small>Artisan Bakery · Coimbatore</small></div></div>
+        <p>Coimbatore's artisan bakery — oven-fresh breads, custom cakes, and savories baked fresh daily with heart.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a>
+        <a href="#custom-cakes">Custom Cakes</a>
+        <a href="#about">Our Story</a>
+        <a href="#location">Location</a>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Coimbatore, Tamil Nadu 641001</p>
+        <p>Open Daily · 8 AM – 9 PM</p>
+        <p>WhatsApp orders welcome</p>
+      </div>
+    </div>
+    <div class="foot-bot">© <span id="yr"></span> Reverie Synaptic Pulse Bakery · Coimbatore · Crafted with 🤍</div>
+  </div>
+</footer>
+
+<div class="wa-float" onclick="waInquiry()">💬</div>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><h3>Your Order Basket</h3><button class="close-x" onclick="closeCart()">×</button></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot">
+    <div class="tot"><span>Estimated Total</span><span id="cartTotal">₹0</span></div>
+    <button class="wa-btn" onclick="sendWhatsApp()">💬 Confirm Order on WhatsApp</button>
+    <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:10px">Orders are forwarded to Reverie Synaptic Pulse Bakery on WhatsApp for quick confirmation.</p>
+  </div>
+</aside>
+
+<script>
+// ==== CONFIG ==== (edit phone once you share the real number)
+const WA_NUMBER = "919000000000"; // placeholder Coimbatore WhatsApp
+
+const MENU = [
+  {n:"Dutch Truffle Cake",d:"Rich Belgian chocolate ganache layers.",p:780,tag:"Bestseller",img:"1578985545062-69928b1d9587"},
+  {n:"Hot Chicken Puff",d:"Golden, crisp, spicy — baked fresh daily.",p:35,tag:"Hot",img:"1608897013039-887f21d8c804"},
+  {n:"Veg Spicy Puff",d:"Flaky pastry with spiced veg filling.",p:30,tag:"",img:"1601000937973-49d4c1d2a05a"},
+  {n:"Fluffy Milk Bread",d:"Soft, pillowy loaf, twice-daily bake.",p:55,tag:"",img:"1509440159596-0249088772ff"},
+  {n:"Black Forest Cake",d:"Cherries, cream & chocolate shavings.",p:720,tag:"",img:"1565958011703-44f9829ba187"},
+  {n:"Butterscotch Pastry",d:"Caramel crunch in every bite.",p:60,tag:"",img:"1588195538326-c5b1e9f80a1b"},
+  {n:"Butter Cookies (250g)",d:"Classic melt-in-mouth tea cookies.",p:120,tag:"",img:"1499636136210-6f4ee915583e"},
+  {n:"Red Velvet Slice",d:"Velvety sponge with cream cheese.",p:90,tag:"New",img:"1586985289906-406988974504"},
+];
+const FLAVORS=[["🍫 Dutch Truffle",0],["🍒 Black Forest",-40],["🍯 Butterscotch",-60],["❤️ Red Velvet",40],["🍓 Fresh Fruit",60],["🍇 Heritage Plum",120]];
+const WEIGHTS=[["0.5 Kg",0.5],["1.0 Kg",1],["2.0 Kg",2],["3.0 Kg+",3]];
+const SHAPES=[["Round",0],["Heart",80],["Square",40]];
+const TESTS=[
+  {t:"The Dutch Truffle cake for my daughter's birthday was stunning and so fresh. Best in Coimbatore!",n:"Priya R.",w:"Gandhipuram"},
+  {t:"Their hot chicken puffs are legendary. I stop by every evening on my way home.",n:"Karthik M.",w:"R.S. Puram"},
+  {t:"Ordered a custom fondant cake with 24 hours notice — turned out beautiful and delicious.",n:"Sneha V.",w:"Peelamedu"},
+];
+
+let cart=[], cakeFlavor=0, cakeWeight=1, cakeShape=0, cakeFlavorName="🍫 Dutch Truffle", cakeShapeName="Round";
+const BASE_CAKE=780;
+
+// render menu
+document.getElementById('menuGrid').innerHTML = MENU.map((m,i)=>`
+  <div class="item">
+    <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-${m.img}?auto=format&fit=crop&w=600&q=80')">${m.tag?`<span class="tag">${m.tag}</span>`:''}</div>
+    <div class="body">
+      <h3>${m.n}</h3>
+      <div class="desc">${m.d}</div>
+      <div class="foot"><span class="price">₹${m.p}</span><button class="add" onclick="addItem(${i})">+ Add</button></div>
+    </div>
+  </div>`).join('');
+
+// render configurator options
+function renderOpts(id,arr,activeIdx,cb){
+  document.getElementById(id).innerHTML=arr.map((o,i)=>`<button class="opt ${i===activeIdx?'active':''}" onclick="${cb}(${i})">${o[0]}</button>`).join('');
+}
+renderOpts('flavors',FLAVORS,0,'selFlavor');
+renderOpts('weights',WEIGHTS,1,'selWeight');
+renderOpts('shapes',SHAPES,0,'selShape');
+function calcCake(){
+  const w=WEIGHTS[cakeWeight][1];
+  const price=Math.round((BASE_CAKE*w)+FLAVORS[cakeFlavor][1]*w+SHAPES[cakeShape][1]);
+  document.getElementById('cakePrice').textContent='₹'+price;
+  return price;
+}
+function selFlavor(i){cakeFlavor=i;cakeFlavorName=FLAVORS[i][0];renderOpts('flavors',FLAVORS,i,'selFlavor');calcCake();}
+function selWeight(i){cakeWeight=i;renderOpts('weights',WEIGHTS,i,'selWeight');calcCake();}
+function selShape(i){cakeShape=i;cakeShapeName=SHAPES[i][0];renderOpts('shapes',SHAPES,i,'selShape');calcCake();}
+calcCake();
+
+// testimonials
+document.getElementById('testGrid').innerHTML=TESTS.map(t=>`
+  <div class="test"><div class="stars">★★★★★</div><p>"${t.t}"</p>
+  <div class="who"><div class="av">${t.n[0]}</div><div><b>${t.n}</b><small>${t.w}, Coimbatore</small></div></div></div>`).join('');
+
+// cart
+function addItem(i){const m=MENU[i];const ex=cart.find(c=>c.n===m.n);if(ex)ex.q++;else cart.push({n:m.n,p:m.p,q:1});renderCart();openCart();}
+function addCake(){
+  const price=calcCake();
+  const msg=document.getElementById('cakeMsg').value||'(no message)';
+  const date=document.getElementById('cakeDate').value||'(date TBD)';
+  const name=WEIGHTS[cakeWeight][0]+' '+cakeFlavorName+' '+cakeShapeName+' Cake — "'+msg+'" ('+date+')';
+  cart.push({n:name,p:price,q:1});renderCart();openCart();
+}
+function renderCart(){
+  const b=document.getElementById('cartBody');
+  const badge=document.getElementById('badge');
+  const count=cart.reduce((s,c)=>s+c.q,0);
+  badge.textContent=count;
+  if(!cart.length){b.innerHTML='<div class="cart-empty">🧺<br>Your basket is empty.<br>Add some fresh bakes!</div>';document.getElementById('cartTotal').textContent='₹0';return;}
+  b.innerHTML=cart.map((c,i)=>`<div class="cart-line"><div style="flex:1"><div style="font-weight:600;font-size:.9rem">${c.n}</div><div class="qtybox"><button onclick="chQty(${i},-1)">−</button><span>${c.q}</span><button onclick="chQty(${i},1)">+</button><span style="margin-left:auto;color:var(--cocoa);font-weight:600">₹${c.p*c.q}</span></div></div></div>`).join('');
+  const tot=cart.reduce((s,c)=>s+c.p*c.q,0);
+  document.getElementById('cartTotal').textContent='₹'+tot;
+}
+function chQty(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);renderCart();}
+function openCart(){document.getElementById('overlay').classList.add('open');document.getElementById('drawer').classList.add('open');}
+function closeCart(){document.getElementById('overlay').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
+function sendWhatsApp(){
+  if(!cart.length){alert('Your basket is empty!');return;}
+  let msg='*New Order — Reverie Synaptic Pulse Bakery*%0A%0A';
+  cart.forEach(c=>{msg+=`• ${c.n} × ${c.q} = ₹${c.p*c.q}%0A`;});
+  const tot=cart.reduce((s,c)=>s+c.p*c.q,0);
+  msg+=`%0A*Estimated Total: ₹${tot}*%0A%0APlease confirm availability &amp; pickup/delivery.`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+}
+function waInquiry(){window.open(`https://wa.me/${WA_NUMBER}?text=Hi! I have an enquiry about Reverie Synaptic Pulse Bakery.`,'_blank');}
+document.getElementById('yr').textContent=new Date().getFullYear();
+renderCart();
+</script>
+</body>
+</html>
