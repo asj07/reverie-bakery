@@ -90,7 +90,28 @@ footer{background:#1c130d;color:#9c8877;padding:28px 0;text-align:center;font-si
 /* toast */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--cocoa-dark);color:#fff;padding:13px 22px;border-radius:40px;font-size:.9rem;opacity:0;transition:.4s;z-index:300;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:820px){.pdp{grid-template-columns:1fr;gap:24px}}
+@media(max-width:820px){
+  .pdp{grid-template-columns:1fr;gap:24px}
+  .gallery .main{aspect-ratio:4/3}
+  .info h1{font-size:1.7rem}
+  nav{height:64px}
+}
+@media(max-width:520px){
+  .wrap{padding:0 16px}
+  .pdp{padding-bottom:24px}
+  .info h1{font-size:1.5rem}
+  .price-row .now{font-size:1.6rem}
+  .act .btn{flex:1 1 100%}
+  .thumbs button{width:60px;height:60px}
+  .section{padding:30px 0}
+  .section h2{font-size:1.3rem}
+  .logo .name{font-size:.9rem}
+  .logo .name small{font-size:.55rem}
+  .logo .mark{width:38px;height:38px;font-size:1.1rem}
+  .crumb{font-size:.75rem}
+  .rel-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .rev-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>

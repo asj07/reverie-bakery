@@ -172,15 +172,41 @@ footer{background:#1c130d;color:#cbb9a6;padding:50px 0 24px}
 .wa-float{position:fixed;bottom:22px;right:22px;background:var(--green);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;z-index:150;box-shadow:0 8px 24px rgba(37,211,102,.45)}
 
 @media(max-width:860px){
-  .nav-links{display:none}
+  .nav-links{
+    position:absolute;top:72px;left:0;right:0;background:var(--bg);
+    flex-direction:column;gap:0;padding:8px 20px 16px;border-bottom:1px solid var(--line);
+    box-shadow:0 12px 24px rgba(107,63,42,.12);display:none
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 4px;border-bottom:1px solid var(--line);width:100%}
   .hamburger{display:block}
   .hero-stats{grid-template-columns:1fr 1fr}
   .info-grid,.cake-grid,.about-grid,.loc-grid,.foot-grid{grid-template-columns:1fr}
   .info-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
   .show-grid,.test-grid{grid-template-columns:1fr 1fr}
   .about-imgs{grid-template-columns:1fr 1fr}
+  .section{padding:56px 0}
+  .hero{min-height:auto;padding:40px 0}
+  .hero-inner{padding:20px 0}
+  nav{height:64px}
+  header{position:sticky}
 }
-@media(max-width:520px){.show-grid,.test-grid{grid-template-columns:1fr}}
+@media(max-width:520px){
+  .show-grid,.test-grid,.about-imgs{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat{padding:12px}
+  .hero h1{font-size:2.1rem}
+  .hero-btns .btn{flex:1;text-align:center}
+  .hero-btns{width:100%}
+  .logo .name{font-size:.92rem}
+  .logo .name small{font-size:.56rem}
+  .logo .mark{width:38px;height:38px;font-size:1.1rem}
+  .cart-btn{padding:9px 14px;font-size:.8rem}
+  .wrap{padding:0 16px}
+  .config,.hours,.loc-card{padding:20px}
+  .menu-grid{grid-template-columns:1fr}
+  .sec-head{margin-bottom:34px}
+}
 </style>
 </head>
 <body>
@@ -194,16 +220,16 @@ footer{background:#1c130d;color:#cbb9a6;padding:50px 0 24px}
         <div class="mark">R</div>
         <div class="name">Reverie Synaptic Pulse<small>Artisan Bakery · Coimbatore</small></div>
       </a>
-      <div class="nav-links">
-        <a href="#menu">Menu</a>
-        <a href="#custom-cakes">Custom Cakes</a>
-        <a href="#about">Our Story</a>
-        <a href="#showcase">Gallery</a>
-        <a href="#location">Location</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#menu" onclick="closeNav()">Menu</a>
+        <a href="#custom-cakes" onclick="closeNav()">Custom Cakes</a>
+        <a href="#about" onclick="closeNav()">Our Story</a>
+        <a href="#showcase" onclick="closeNav()">Gallery</a>
+        <a href="#location" onclick="closeNav()">Location</a>
       </div>
       <div class="nav-cta">
         <button class="cart-btn" onclick="openCart()">Basket <span class="badge" id="badge">0</span></button>
-        <button class="hamburger" onclick="document.querySelector('.nav-links').style.display='flex'">☰</button>
+        <button class="hamburger" onclick="toggleNav()">☰</button>
       </div>
     </nav>
   </div>
@@ -505,8 +531,9 @@ function renderCart(){
   document.getElementById('cartTotal').textContent='₹'+tot;
 }
 function chQty(i,d){cart[i].q+=d;if(cart[i].q<=0)cart.splice(i,1);renderCart();}
-function openCart(){document.getElementById('overlay').classList.add('open');document.getElementById('drawer').classList.add('open');}
-function closeCart(){document.getElementById('overlay').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
+function openCart(){document.getElementById('overlay').classList.add('open');document.getElementById('drawer').classList.add('open');}function closeCart(){document.getElementById('overlay').classList.remove('open');document.getElementById('drawer').classList.remove('open');}
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+function closeNav(){document.getElementById('navLinks').classList.remove('open');}
 function sendWhatsApp(){
   if(!cart.length){alert('Your basket is empty!');return;}
   let msg='*New Order — Reverie Synaptic Pulse Bakery*%0A%0A';
