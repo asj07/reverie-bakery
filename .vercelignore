@@ -1,7 +1,5 @@
 node_modules
-.vercel
-.DS_Store
 package.json
 package-lock.json
-mob_*.png
 mobtest*.js
+mob_*.png
