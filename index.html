@@ -331,12 +331,10 @@ footer{background:#1c130d;color:#cbb9a6;padding:50px 0 24px}
   </div>
 </div>
 
-<!-- ===== PROMO STRIP ===== -->
+<!-- ===== PROMO STRIP (admin-customisable, rotates through active promos) ===== -->
 <div class="promobar">
   <div class="wrap">
-    <span><b>FREE DELIVERY</b> on orders over ₹750</span>
-    <span class="pdot">•</span>
-    <span><b>15% OFF</b> your first custom cake order</span>
+    <span id="promoText"><b>FREE DELIVERY</b> on orders over ₹750</span>
   </div>
 </div>
 
@@ -662,6 +660,29 @@ function goCheckout(){ if(!cart.length){alert('Your basket is empty!');return;} 
 function waInquiry(){window.open(`https://wa.me/${WA_NUMBER}?text=`+encodeURIComponent('Hi! I have an enquiry about Reverie Synaptic Pulse Bakery.'),'_blank');}
 // load any existing cart saved from product pages
 try{ const saved=JSON.parse(localStorage.getItem('rsp-cart')||'[]'); if(Array.isArray(saved)&&saved.length) cart=saved; }catch(e){}
+
+// ==== Promo strip (admin-customisable via admin.html, up to 6, rotates) ====
+const DEFAULT_PROMOS=[
+  {text:"FREE DELIVERY on orders over ₹750",on:true},
+  {text:"15% OFF your first custom cake order",on:true},
+  {text:"Fresh puffs baked hot every afternoon 🥐",on:true},
+  {text:"Order celebration cakes 24–48 hrs in advance",on:true},
+  {text:"Open 7 days · 8:00 AM – 9:00 PM",on:false},
+  {text:"WhatsApp us for bulk & party orders",on:false},
+];
+function getPromos(){try{const p=JSON.parse(localStorage.getItem('rsp-promos'));if(Array.isArray(p)&&p.length)return p;}catch(e){}return DEFAULT_PROMOS;}
+(function initPromo(){
+  const active=getPromos().filter(p=>p.on&&p.text.trim());
+  const el=document.getElementById('promoText');
+  if(!el){return;}
+  if(!active.length){el.parentElement.parentElement.style.display='none';return;}
+  let i=0;
+  const show=()=>{el.style.opacity=0;setTimeout(()=>{el.innerHTML=active[i].text;el.style.opacity=1;i=(i+1)%active.length;},250);};
+  el.style.transition='opacity .25s';
+  show();
+  if(active.length>1) setInterval(show,4000);
+})();
+
 document.getElementById('yr').textContent=new Date().getFullYear();
 renderCart();
 </script>

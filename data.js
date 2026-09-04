@@ -153,3 +153,19 @@ function clearCart(){ localStorage.removeItem("rsp-cart"); }
 const DELIVERY_FEE=40;          // flat delivery fee
 const FREE_DELIVERY_ABOVE=750;  // free delivery threshold
 function deliveryFee(sub, mode){ return mode==="pickup"?0:(sub>=FREE_DELIVERY_ABOVE?0:DELIVERY_FEE); }
+
+// ==== Promo strips (admin-customisable, up to 6) ====
+const DEFAULT_PROMOS = [
+  { text: "FREE DELIVERY on orders over ₹750", on: true },
+  { text: "15% OFF your first custom cake order", on: true },
+  { text: "Fresh puffs baked hot every afternoon 🥐", on: true },
+  { text: "Order celebration cakes 24–48 hrs in advance", on: true },
+  { text: "Open 7 days · 8:00 AM – 9:00 PM", on: false },
+  { text: "WhatsApp us for bulk & party orders", on: false },
+];
+function loadPromos(){
+  try{ const p=JSON.parse(localStorage.getItem("rsp-promos")); if(Array.isArray(p)&&p.length) return p; }catch(e){}
+  return DEFAULT_PROMOS.slice();
+}
+function savePromos(list){ localStorage.setItem("rsp-promos", JSON.stringify(list)); }
+function activePromos(){ return loadPromos().filter(p=>p.on && p.text.trim()); }
